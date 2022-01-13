@@ -3,8 +3,8 @@
     <string name="title_activity_selector">SelectorActivity</string>
 
     <!-- Selector activity strings -->
-    <string name ="selector_splash">What form of IBD is being tracked?</string>
-    <string name ="selector_or">Or</string>
+    <string name="selector_splash">What form of IBD is being tracked?</string>
+    <string name="selector_or">Or</string>
     <string name="selector_button_crohns">Crohn\'s Disease</string>
     <string name="selector_button_colitis">Ulcerative Colitis</string>
 </resources>

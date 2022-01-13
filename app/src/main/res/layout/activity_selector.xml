@@ -6,14 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".SelectorActivity">
 
+    <Button
+        android:id="@+id/btnCrohnsSelector"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/selector_button_crohns"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectorSplash" />
+
     <TextView
         android:id="@+id/tvSelectorSplash"
-        android:layout_width="117dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="337dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="132dp"
         android:text="@string/selector_splash"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/selector_or"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCrohnsSelector" />
+
+    <Button
+        android:id="@+id/btnColitisSelector"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/selector_button_colitis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOr" />
 </androidx.constraintlayout.widget.ConstraintLayout>
