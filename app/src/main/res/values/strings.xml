@@ -7,4 +7,9 @@
     <string name="selector_or">Or</string>
     <string name="selector_button_crohns">Crohn\'s Disease</string>
     <string name="selector_button_colitis">Ulcerative Colitis</string>
+
+    <!-- Navvbar strings -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_survey">Survey</string>
+    <string name="nav_settings">Settings</string>
 </resources>

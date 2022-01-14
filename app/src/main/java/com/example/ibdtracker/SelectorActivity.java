@@ -50,12 +50,14 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
             editor.apply();
 
             //OPEN THE NEW ACTIVITY
+            startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start dashboard activity
+            finish(); //finish current activity - stops user from going back to activity
         }
         //if the button id is btnColitisSelector
         else if(view.getId() == R.id.btnColitisSelector) {
             //Button test
-            Toast toast = Toast.makeText(this.getApplicationContext(), "COLITIS BUTTON", Toast.LENGTH_SHORT);
-            toast.show();
+            //Toast toast = Toast.makeText(this.getApplicationContext(), "COLITIS BUTTON", Toast.LENGTH_SHORT);
+            //toast.show();
 
             //get the SP editor and add a value to SP
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -65,6 +67,9 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
             editor.apply();
 
             //open the new activity
+            //TODO: Change to colitis dashboard
+            startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start dashboard activity
+            finish(); //finish current activity - stops user from going back to activity
         }
         //otherwise it is an error, notify user
         else {

@@ -1,0 +1,18 @@
+<!-- XML file for the bottom navar present in most activities -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navSurvey"
+        android:icon="@drawable/ic_survey"
+        android:title="@string/nav_survey"/>
+
+    <item
+        android:id="@+id/navDashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/nav_dashboard"/>
+
+    <item
+        android:id="@+id/navSettings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/nav_settings"/>
+
+</menu>
