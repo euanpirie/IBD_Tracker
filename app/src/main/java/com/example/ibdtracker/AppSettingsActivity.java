@@ -60,6 +60,19 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
                             finish(); // finish current activity
                             return true;
                         }
+                    case R.id.navSurvey:
+                        //if crohns is being tracked
+                        if(ibdType.equals("Crohns")) {
+                            startActivity(new Intent(getApplicationContext(), CrohnsSurveyActivity.class)); //start crohns survey activity
+                            finish(); // finish current activity
+                            return true;
+                        }
+                        //otherwise it is colitis
+                        else{
+                            startActivity(new Intent(getApplicationContext(), ColitisSurveyActivity.class)); //start crohns survey activity
+                            finish(); // finish current activity
+                            return true;
+                        }
                 }
                 return false; //if not in switch statement something has gone very wrong
             }

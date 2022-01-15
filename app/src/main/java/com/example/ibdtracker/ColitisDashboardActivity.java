@@ -30,10 +30,16 @@ public class ColitisDashboardActivity extends AppCompatActivity {
                     //settings page
                     case R.id.navSettings:
                         startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start settings activity
-                        finish();
+                        finish(); //end current activity
+                        return true;
                     //dashboard page
                     case R.id.navDashboard:
                         return true; //do nothing
+                    //survey page
+                    case R.id.navSurvey:
+                        startActivity(new Intent(getApplicationContext(), ColitisSurveyActivity.class)); //start survey activity
+                        finish(); //end current activity
+                        return true;
                 }
                 return false; //if not in switch statement something has gone very wrong
             }

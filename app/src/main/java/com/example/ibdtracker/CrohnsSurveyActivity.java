@@ -9,17 +9,17 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class CrohnsDashboardActivity extends AppCompatActivity {
+public class CrohnsSurveyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide(); //hide app name bar
-        setContentView(R.layout.activity_crohns_dashboard);
+        setContentView(R.layout.activity_crohns_survey);
 
         //Bottom navigation bar set up
         BottomNavigationView bottomNav = findViewById(R.id.bnvNavigation); //initialising and assigning the bottomNav variable
-        bottomNav.setSelectedItemId(R.id.navDashboard); //setting the selected item in the nav bar
+        bottomNav.setSelectedItemId(R.id.navSurvey); //setting the selected item in the nav bar
 
         //set the click listeners for each of the nav bar items
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -34,12 +34,11 @@ public class CrohnsDashboardActivity extends AppCompatActivity {
                         return true;
                     //dashboard page
                     case R.id.navDashboard:
-                        return true; //do nothing
+                        startActivity(new Intent(getApplicationContext(), CrohnsDashboardActivity.class)); //start survey activity
+                        finish(); //end current activity
                     //survey page
                     case R.id.navSurvey:
-                        startActivity(new Intent(getApplicationContext(), CrohnsSurveyActivity.class)); //start survey activity
-                        finish(); //end current activity
-                        return true;
+                        return true; // do nothing
                 }
                 return false; //if not in switch statement something has gone very wrong
             }
