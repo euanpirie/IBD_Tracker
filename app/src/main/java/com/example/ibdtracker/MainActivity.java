@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(SelectorActivity.SHARED_PREF_FILE, MODE_PRIVATE);
 
         //get the type of ibd stored in sp
-        String ibdType = sharedPreferences.getString(SelectorActivity.IBD_TYPE_KEY, null );
+        String ibdType = sharedPreferences.getString(SelectorActivity.IBD_TYPE_KEY, "" );
 
         //if the value in sp is crohns or colitis, this is not the fist time the app has been used so open activity
         if(ibdType.equals("Crohns") || ibdType.equals("Colitis")) {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start dashboard activity
                         finish(); //finish current activity - stops user from going back to activity
                     }
-                },1000); //2 second delay
+                },1000); //1 second delay
             }
             //otherwise must be colitis
             else{
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start dashboard activity
                         finish(); //finish current activity - stops user from going back to activity
                     }
-                },1000); //2 second delay
+                },1000); //1 second delay
             }
         }
         //if the values are not crohns or colitis - the selector activity needs to be opened
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), SelectorActivity.class)); //start selector activity
                     finish(); //finish current activity - stops user from going back to activity
                 }
-            },1000); //2 second delay
+            },1000); //1 second delay
         }
 
     }

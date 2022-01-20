@@ -17,5 +17,30 @@
     <string name="survey_title">Symptom questionnaire</string>
     <string name="survey_info">Please answer the following questions by selecting a value from those provided. Explanations will be provided where necessary.</string>
 
-    <!-- survey shared question strings -->
+    <!-- survey crohns strings -->
+    <string name="crohns_q1">How many liquid or soft stools did you pass today?</string>
+    <string name="crohns_q2">Are you using diphenoxylate or loperamide for diarrhoea?</string>
+
+    <string name="crohns_q3">Have you experienced any abdominal (stomach) pain over the last 24 hours?</string>
+    <string name="crohns_q3_a1">None</string>
+    <string name="crohns_q3_a2">Mild pain</string>
+    <string name="crohns_q3_a3">Moderate pain</string>
+    <string name="crohns_q3_a4">Severe pain</string>
+
+    <string name="crohns_q4">How would you describe your general well being over the last 24 hours?</string>
+    <string name="crohns_q4_a1">Well/Average</string>
+    <string name="crohns_q4_a2">Slightly below average</string>
+    <string name="crohns_q4_a3">Poor</string>
+    <string name="crohns_q4_a4">Very poor</string>
+    <string name="crohns_q4_a5">Terrible</string>
+
+    <string name="crohns_q5">Are you experiencing any of the following complications? (Check all that apply)</string>
+    <string name="crohns_q5_a1">Joint pain</string>
+    <string name="crohns_q5_a2">Irritation and/or swelling of the eye</string>
+    <string name="crohns_q5_a3">Red patches and/or large bumps on the skin</string>
+    <string name="crohns_q5_a4">Tears/pain and/or abscesses near the anus</string>
+    <string name="crohns_q5_a5">Any other fistulae</string>
+    <string name="crohns_q5_a6">Fever</string>
+
+
 </resources>
