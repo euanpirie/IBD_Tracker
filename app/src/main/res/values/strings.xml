@@ -42,5 +42,14 @@
     <string name="crohns_q5_a5">Any other fistulae</string>
     <string name="crohns_q5_a6">Fever</string>
 
+    <string name="crohns_q6">Have you discovered any abdominal masses in the last 24 hours?</string>
+    <string name="crohns_q6_a1">No mass discovered</string>
+    <string name="crohns_q6_a2">Possible mass discovered</string>
+    <string name="crohns_q6_a3">Definite mass discovered</string>
+
+    <string name="shared_q1">What is your current weight?</string>
+
+
+
 
 </resources>
