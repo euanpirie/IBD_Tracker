@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class CrohnsDashboardActivity extends AppCompatActivity {
 
@@ -16,6 +19,16 @@ public class CrohnsDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide(); //hide app name bar
         setContentView(R.layout.activity_crohns_dashboard);
+
+        GraphView graph = (GraphView) findViewById(R.id.graphTest);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6)
+        });
+        graph.addSeries(series);
 
         //Bottom navigation bar set up
         BottomNavigationView bottomNav = findViewById(R.id.bnvNavigation); //initialising and assigning the bottomNav variable

@@ -19,7 +19,11 @@
 
     <!-- survey crohns strings -->
     <string name="crohns_q1">How many liquid or soft stools did you pass today?</string>
+    <string name="crohns_q1_hint">A whole number</string>
+
     <string name="crohns_q2">Are you using diphenoxylate or loperamide for diarrhoea?</string>
+    <string name="crohns_q2_a1">Yes</string>
+    <string name="crohns_q2_a2">No</string>
 
     <string name="crohns_q3">Have you experienced any abdominal (stomach) pain over the last 24 hours?</string>
     <string name="crohns_q3_a1">None</string>
@@ -47,8 +51,8 @@
     <string name="crohns_q6_a2">Possible mass discovered</string>
     <string name="crohns_q6_a3">Definite mass discovered</string>
 
-    <string name="shared_q1">What is your current weight?</string>
-
+    <string name="shared_q1">What is your current weight? (KGs)</string>
+    <string name="shared_q1_hint">Weight in kilograms</string>
 
 
 

@@ -6,19 +6,338 @@
     android:layout_height="match_parent"
     tools:context=".CrohnsSurveyActivity">
 
+    <TextView
+        android:id="@+id/tvCrohnsSurveyHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/survey_title"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:id="@+id/svDashboard"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/bnvNavigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvCrohnsSurveyHeading"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="false"/>
+            android:adjustViewBounds="false">
+
+            <TextView
+                android:id="@+id/tvCrohnsQ1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/crohns_q1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/numberCrohnsQ1"
+                android:layout_width="171dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/crohns_q1_hint"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCrohnsQ1"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvCrohnsQ2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/crohns_q2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numberCrohnsQ1" />
+
+            <RadioGroup
+                android:id="@+id/rgCrohnsQ2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:checkedButton="@id/rbCrohnsQ2A1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCrohnsQ2">
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ2A1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q2_a1" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ2A2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q2_a2" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvCrohnsQ3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/crohns_q3"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgCrohnsQ2" />
+
+            <RadioGroup
+                android:id="@+id/rgCrohnsQ3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:checkedButton="@id/rbCrohnsQ3A1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCrohnsQ3">
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ3A1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q3_a1" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ3A2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q3_a2" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ3A3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q3_a3" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ3A4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q3_a4" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvCrohnsQ4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/crohns_q4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgCrohnsQ3" />
+
+            <RadioGroup
+                android:id="@+id/rgCrohnsQ4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:checkedButton="@id/rbCrohnsQ4A1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCrohnsQ4">
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ4A1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q4_a1" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ4A2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q4_a2" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ4A3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q4_a3" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ4A4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q4_a4" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ4A5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q4_a5" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvCrohnsQ5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/crohns_q5"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgCrohnsQ4" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgCrohnsQ5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCrohnsQ5">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCrohnsQ5A1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/crohns_q5_a1" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCrohnsQ5A2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/crohns_q5_a2" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCrohnsQ5A3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/crohns_q5_a3" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCrohnsQ5A4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/crohns_q5_a4" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCrohnsQ5A5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/crohns_q5_a5" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCrohnsQ5A6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/crohns_q5_a6" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/tvCrohnsQ6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/crohns_q6"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cgCrohnsQ5" />
+
+            <RadioGroup
+                android:id="@+id/rgCrohnsQ6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:checkedButton="@id/rbCrohnsQ6A1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCrohnsQ6">
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ6A1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q6_a1" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ6A2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q6_a2" />
+
+                <RadioButton
+                    android:id="@+id/rbCrohnsQ6A3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crohns_q6_a3" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvCrohnsQ7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/shared_q1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgCrohnsQ6" />
+
+            <EditText
+                android:id="@+id/numberCrohnsQ7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/shared_q1_hint"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCrohnsQ7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
