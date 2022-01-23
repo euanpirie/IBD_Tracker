@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IBDTracker">
         <activity
+            android:name=".WeightEntryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ColitisSurveyActivity"
             android:exported="false" />
         <activity

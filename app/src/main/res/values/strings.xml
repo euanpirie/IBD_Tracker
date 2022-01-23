@@ -8,14 +8,20 @@
     <string name="selector_button_crohns">Crohn\'s Disease</string>
     <string name="selector_button_colitis">Ulcerative Colitis</string>
 
+    <!-- Weight entry strings -->
+    <string name="weight_prompt">When you are not experiencing a flare up, what is an estimate of your typical weight? (KGs)</string>
+    <string name="weight_save">Save weight</string>
+
     <!-- Navvbar strings -->
     <string name="nav_dashboard">Dashboard</string>
     <string name="nav_survey">Survey</string>
     <string name="nav_settings">Settings</string>
 
-    <!-- Survey title strings -->
+    <!-- Survey general strings -->
     <string name="survey_title">Symptom questionnaire</string>
     <string name="survey_info">Please answer the following questions by selecting a value from those provided. Explanations will be provided where necessary.</string>
+    <string name="survey_previous_day">Previous day</string>
+    <string name="survey_save">Save answers</string>
 
     <!-- survey crohns strings -->
     <string name="crohns_q1">How many liquid or soft stools did you pass today?</string>
@@ -53,7 +59,6 @@
 
     <string name="shared_q1">What is your current weight? (KGs)</string>
     <string name="shared_q1_hint">Weight in kilograms</string>
-
 
 
 </resources>

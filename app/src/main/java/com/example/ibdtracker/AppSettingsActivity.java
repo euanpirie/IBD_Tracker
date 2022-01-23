@@ -29,9 +29,9 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
         Button btn = findViewById(R.id.button);
         btn.setOnClickListener(this);
 
-        String ibdType = sharedPreferences.getString(SelectorActivity.IBD_TYPE_KEY, null);
+        Float ibdType = sharedPreferences.getFloat(MainActivity.TYPICAL_WEIGHT_KEY, 0);
         TextView tv = findViewById(R.id.textView2);
-        tv.setText(ibdType);
+        tv.setText(ibdType.toString());
 
         //Bottom navigation bar set up
         BottomNavigationView bottomNav = findViewById(R.id.bnvNavigation); //initialising and assigning the bottomNav variable

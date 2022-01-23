@@ -50,7 +50,7 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
             editor.apply();
 
             //OPEN THE NEW ACTIVITY
-            startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start dashboard activity
+            startActivity(new Intent(getApplicationContext(), WeightEntryActivity.class)); //start weight entry activity
             finish(); //finish current activity - stops user from going back to activity
         }
         //if the button id is btnColitisSelector
@@ -67,8 +67,7 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
             editor.apply();
 
             //open the new activity
-            //TODO: Change to colitis dashboard
-            startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start dashboard activity
+            startActivity(new Intent(getApplicationContext(), WeightEntryActivity.class)); //start weight entry activity
             finish(); //finish current activity - stops user from going back to activity
         }
         //otherwise it is an error, notify user

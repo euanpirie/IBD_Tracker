@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     //Shared preferences set up
     public static final String SHARED_PREF_FILE = "com.example.ibdtracker"; //shared pref file name
     public static final String IBD_TYPE_KEY = "ibd_type"; //key for the ibd type stored in SP
+    public static final String TYPICAL_WEIGHT_KEY = "typical_weight"; //key for the users typical weight stored in SP
     private SharedPreferences sharedPreferences; //the users saved preferences
 
     @Override
