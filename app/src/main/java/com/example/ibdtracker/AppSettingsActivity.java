@@ -10,8 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.ibdtracker.Data.CrohnsResponseRepository;
+import com.example.ibdtracker.Data.CrohnsSurveyResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.time.LocalDate;
+import java.util.List;
 
 public class AppSettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,9 +35,22 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
         Button btn = findViewById(R.id.button);
         btn.setOnClickListener(this);
 
-        Float ibdType = sharedPreferences.getFloat(MainActivity.TYPICAL_WEIGHT_KEY, 0);
+        String ibdType = sharedPreferences.getString(MainActivity.IBD_TYPE_KEY, "");
+
+
+
+        List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponses();
+
+        CrohnsSurveyResponse response = responseList.stream()
+                .filter(test -> LocalDate.now().toString().equals(test.getDate()))
+                .findAny()
+                .orElse(null);
+
         TextView tv = findViewById(R.id.textView2);
-        tv.setText(ibdType.toString());
+        tv.setText(response.getDate());
+
+        Toast toast = Toast.makeText(this.getApplicationContext(), responseList.size() + "" , Toast.LENGTH_SHORT);
+        toast.show();
 
         //Bottom navigation bar set up
         BottomNavigationView bottomNav = findViewById(R.id.bnvNavigation); //initialising and assigning the bottomNav variable
@@ -46,6 +65,7 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
                     //settings page
                     case R.id.navSettings:
                         return true; //do nothing
+
                     //dashboard page
                     case R.id.navDashboard:
                         //if crohns is being tracked
@@ -60,6 +80,8 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
                             finish(); // finish current activity
                             return true;
                         }
+
+                    //survey pages
                     case R.id.navSurvey:
                         //if crohns is being tracked
                         if(ibdType.equals("Crohns")) {
