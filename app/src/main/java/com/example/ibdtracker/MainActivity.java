@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        //TODO: change to crohns dashboard activity
-                        startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start dashboard activity
+                        startActivity(new Intent(getApplicationContext(), CrohnsDashboardActivity.class)); //start dashboard activity
                         finish(); //finish current activity - stops user from going back to activity
                     }
                 },1000); //1 second delay
@@ -50,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        //TODO: change to colitis dashboard activity
-                        startActivity(new Intent(getApplicationContext(), AppSettingsActivity.class)); //start dashboard activity
+                        startActivity(new Intent(getApplicationContext(), ColitisDashboardActivity.class)); //start dashboard activity
                         finish(); //finish current activity - stops user from going back to activity
                     }
                 },1000); //1 second delay

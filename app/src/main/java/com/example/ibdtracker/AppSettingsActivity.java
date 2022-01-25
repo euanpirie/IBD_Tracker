@@ -37,8 +37,6 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
 
         String ibdType = sharedPreferences.getString(MainActivity.IBD_TYPE_KEY, "");
 
-
-
         List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponses();
 
         CrohnsSurveyResponse response = responseList.stream()
@@ -47,7 +45,7 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
                 .orElse(null);
 
         TextView tv = findViewById(R.id.textView2);
-        tv.setText(response.getDate());
+        tv.setText(String.valueOf(response.getCrohnsQ1()));
 
         Toast toast = Toast.makeText(this.getApplicationContext(), responseList.size() + "" , Toast.LENGTH_SHORT);
         toast.show();
@@ -106,7 +104,10 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View view) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(SelectorActivity.IBD_TYPE_KEY, "");
+        editor.putFloat(MainActivity.TYPICAL_WEIGHT_KEY, 0);
         editor.apply();
+
+        CrohnsResponseRepository.getRepository(getApplicationContext()).deleteAll();
 
         finishAffinity();
     }
