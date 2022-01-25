@@ -38,7 +38,22 @@ public class CrohnsSurveyResponse {
 
     private float Weight; //the weight entered in the question - used for dashboard
 
-
+    /**
+     * A constructor for a crohns survey response
+     * @param CrohnsQ1 The numberic value obtained from the answer
+     * @param CrohnsQ2 The numberic value obtained from the answer
+     * @param CrohnsQ3 The numberic value obtained from the answer
+     * @param CrohnsQ4 The numberic value obtained from the answer
+     * @param CrohnsQ5 The numberic value obtained from the answer
+     * @param CrohnsQ6 The numberic value obtained from the answer
+     * @param CrohnsQ7 The numberic value obtained from the answer
+     * @param CrohnsQ2ID the ID of the selected radio button for the question
+     * @param CrohnsQ3ID the ID of the selected radio button for the question
+     * @param CrohnsQ4ID the ID of the selected radio button for the question
+     * @param CrohnsQ6ID the ID of the selected radio button for the question
+     * @param CrohnsQ5ID the ID(s) of the selected chip button(s) for the question
+     * @param Weight the weight entered for question 7 - for dashboard purposes
+     */
     public CrohnsSurveyResponse(float CrohnsQ1, float CrohnsQ2, float CrohnsQ3, float CrohnsQ4,float CrohnsQ5, float CrohnsQ6, float CrohnsQ7,
                                 int CrohnsQ2ID, int CrohnsQ3ID, int CrohnsQ4ID, int CrohnsQ6ID, String CrohnsQ5ID, float Weight) {
         this.CrohnsQ1 = CrohnsQ1;

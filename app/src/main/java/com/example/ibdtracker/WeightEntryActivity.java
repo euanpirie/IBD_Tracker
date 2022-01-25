@@ -23,6 +23,7 @@ public class WeightEntryActivity extends AppCompatActivity implements View.OnCli
         //Get the shared preferences file
         sharedPreferences = getSharedPreferences(SelectorActivity.SHARED_PREF_FILE, MODE_PRIVATE);
 
+        //add on click listener to the save button
         Button btn = findViewById(R.id.btnSaveWeight);
         btn.setOnClickListener(this);
     }

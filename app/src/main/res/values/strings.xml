@@ -60,5 +60,16 @@
     <string name="shared_q1">What is your current weight? (KGs)</string>
     <string name="shared_q1_hint">Weight in kilograms</string>
 
+    <!-- App settings string -->
+    <string name="settings_title">Settings &amp; Info</string>
+    <string name="settings_update_weight">Update typical weight</string>
+    <string name="settings_current_weight">Current weight is: </string>
+    <string name="settings_update_button">Update</string>
+    <string name="settings_reset">Reset app</string>
+    <string name="settings_reset_info">This will delete all data stored by the app. This can not be undone.</string>
+
+    <string name="settings_dialog_message">This can not be undone. Are you sure you want to continue?</string>
+    <string name="settings_dialog_confirm">Delete data</string>
+    <string name="settings_dialog_cancel">Cancel</string>
 
 </resources>
