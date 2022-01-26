@@ -81,4 +81,13 @@ public class CrohnsResponseRepository {
     public void updateResponse(CrohnsSurveyResponse response) {
         this.crohnsSurveyDao.update(response);
     }
+
+    /**
+     * Return the record with the associated date
+     * @param date the date to get the record for
+     * @return the record with the corresponding date
+     */
+    public CrohnsSurveyResponse getFromDate(String date) {
+        return this.crohnsSurveyDao.getFromDate(date);
+    }
 }

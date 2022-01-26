@@ -31,4 +31,7 @@ public interface CrohnsSurveyDao {
     @Query("DELETE FROM CrohnsSurveyResponse")
     void deleteAll(); //delete all entries in the db
 
+    @Query("SELECT * FROM CrohnsSurveyResponse WHERE date LIKE :date")
+    CrohnsSurveyResponse getFromDate(String date); //get the survey with the matching date
+
 }

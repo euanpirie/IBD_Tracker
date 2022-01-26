@@ -57,8 +57,14 @@
     <string name="crohns_q6_a2">Possible mass discovered</string>
     <string name="crohns_q6_a3">Definite mass discovered</string>
 
+    <!-- shared survey strings -->
     <string name="shared_q1">What is your current weight? (KGs)</string>
     <string name="shared_q1_hint">Weight in kilograms</string>
+    <string name="shared_date">Response for: </string>
+
+    <!-- Shared dashboard strings -->
+    <string name="dashboard_prediction">Press the button to predict the status of your IBD.</string>
+    <string name="dashboard_predict_button">Predict</string>
 
     <!-- App settings string -->
     <string name="settings_title">Settings &amp; Info</string>

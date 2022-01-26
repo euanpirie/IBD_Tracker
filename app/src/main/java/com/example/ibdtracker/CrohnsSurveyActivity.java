@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ibdtracker.AI.RuleBasedSystem;
 import com.example.ibdtracker.Data.CrohnsResponseRepository;
 import com.example.ibdtracker.Data.CrohnsSurveyResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,6 +38,10 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
     private static final String CROHNS_Q6_SAVE = "crohnsQ6";
     private static final String CROHNS_Q7_SAVE = "crohnsQ7";
 
+    //current date variable set up
+    private static LocalDate currentDate;
+    private static String currentDateString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,14 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
 
         //Get the shared preferences file
         sharedPreferences = getSharedPreferences(SelectorActivity.SHARED_PREF_FILE, MODE_PRIVATE);
+
+        //get the current date, set up a string to copy
+        currentDate = LocalDate.now();
+        currentDateString = currentDate.toString();
+
+        //update the date text view
+        TextView tvSurveyDate = findViewById(R.id.tvSurveyDate);
+        tvSurveyDate.setText("Response for: " + currentDateString);
 
         //get the list of all survey responses
         List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponses();
@@ -56,90 +70,32 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
 
         //if there is nothing in saved instances and if there is a response for the date, update view to display answers
         if(savedInstanceState == null && response !=null) {
-            //find all of the questions from the view
-            EditText CrohnsQ1 = findViewById(R.id.numberCrohnsQ1);
-            RadioGroup CrohnsQ2 = findViewById(R.id.rgCrohnsQ2);
-            RadioGroup CrohnsQ3 = findViewById(R.id.rgCrohnsQ3);
-            RadioGroup CrohnsQ4 = findViewById(R.id.rgCrohnsQ4);
-            ChipGroup CrohnsQ5 = findViewById(R.id.cgCrohnsQ5);
-            RadioGroup CrohnsQ6 = findViewById(R.id.rgCrohnsQ6);
-            EditText CrohnsQ7 = findViewById(R.id.numberCrohnsQ7);
+            //get all of the info neccessary to update the view from the response
+            String q1 = String.valueOf(response.getCrohnsQ1());
+            int q2 = response.getCrohnsQ2ID();
+            int q3 = response.getCrohnsQ3ID();
+            int q4 = response.getCrohnsQ4ID();
+            String q5 = response.getCrohnsQ5ID();
+            int q6 = response.getCrohnsQ6ID();
+            String q7 = String.valueOf(response.getWeight());
 
-            //set the edit text fields to their respective saved values
-            CrohnsQ1.setText(String.valueOf(response.getCrohnsQ1()));
-            CrohnsQ7.setText(String.valueOf(response.getWeight()));
-
-            //check all of the saved radio buttons for each radio group
-            CrohnsQ2.check(response.getCrohnsQ2ID());
-            CrohnsQ3.check(response.getCrohnsQ3ID());
-            CrohnsQ4.check(response.getCrohnsQ4ID());
-            CrohnsQ6.check(response.getCrohnsQ6ID());
-
-            //get the string format of all the checked chip IDs
-            String CrohnsQ5IDString = response.getCrohnsQ5ID();
-
-            //if the string isn't empty or null
-            if(!CrohnsQ5IDString.isEmpty() && !CrohnsQ5IDString.equals(null)) {
-                //seperate the string into a list of strings, splitting by comma and space
-                List<String> q5StringList = new ArrayList<String>(Arrays.asList(response.getCrohnsQ5ID().split(", ")));
-
-                //create a list to store ints
-                List<Integer> q5IDList = new ArrayList<Integer>();
-
-                //for each string in the list, convert to int and add to int list
-                for(String s: q5StringList) {
-                    q5IDList.add(Integer.valueOf(s));
-                }
-
-                //for ever int in int list, check the chip with that ID
-                for (Integer i: q5IDList) {
-                    CrohnsQ5.check(i);
-                }
-            }
+            //update the layout
+            updateSurvey(q1, q2, q3, q4, q5 ,q6, q7);
         }
 
         //if there is something saved in saved instances
         if(savedInstanceState !=null) {
-            //find all of the questions from the view
-            EditText CrohnsQ1 = findViewById(R.id.numberCrohnsQ1);
-            RadioGroup CrohnsQ2 = findViewById(R.id.rgCrohnsQ2);
-            RadioGroup CrohnsQ3 = findViewById(R.id.rgCrohnsQ3);
-            RadioGroup CrohnsQ4 = findViewById(R.id.rgCrohnsQ4);
-            ChipGroup CrohnsQ5 = findViewById(R.id.cgCrohnsQ5);
-            RadioGroup CrohnsQ6 = findViewById(R.id.rgCrohnsQ6);
-            EditText CrohnsQ7 = findViewById(R.id.numberCrohnsQ7);
+            //get the neccessary info to update the view from saved instances
+            String q1 = savedInstanceState.getString(CROHNS_Q1_SAVE);
+            int q2 = savedInstanceState.getInt(CROHNS_Q2_SAVE);
+            int q3 = savedInstanceState.getInt(CROHNS_Q3_SAVE);
+            int q4 = savedInstanceState.getInt(CROHNS_Q4_SAVE);
+            String q5 = savedInstanceState.getString(CROHNS_Q5_SAVE);
+            int q6 = savedInstanceState.getInt(CROHNS_Q6_SAVE);
+            String q7 = savedInstanceState.getString(CROHNS_Q7_SAVE);
 
-            //set the edit text views with their respective answer
-            CrohnsQ1.setText(savedInstanceState.getString(CROHNS_Q1_SAVE));
-            CrohnsQ7.setText(savedInstanceState.getString(CROHNS_Q7_SAVE));
-
-            //check the radio buttons stored in saved instances
-            CrohnsQ2.check(savedInstanceState.getInt(CROHNS_Q2_SAVE));
-            CrohnsQ3.check(savedInstanceState.getInt(CROHNS_Q3_SAVE));
-            CrohnsQ4.check(savedInstanceState.getInt(CROHNS_Q4_SAVE));
-            CrohnsQ6.check(savedInstanceState.getInt(CROHNS_Q6_SAVE));
-
-            //get the string format of all the checked chip IDs
-            String CrohnsQ5IDString = savedInstanceState.getString(CROHNS_Q5_SAVE);
-
-            //if the string isn't empty or null
-            if(!CrohnsQ5IDString.isEmpty() && !CrohnsQ5IDString.equals(null)) {
-                //seperate the string into a list of strings, splitting by comma and space
-                List<String> q5StringList = new ArrayList<String>(Arrays.asList(response.getCrohnsQ5ID().split(", ")));
-
-                //create a list to store ints
-                List<Integer> q5IDList = new ArrayList<Integer>();
-
-                //for each string in the list, convert to int and add to int list
-                for(String s: q5StringList) {
-                    q5IDList.add(Integer.valueOf(s));
-                }
-
-                //for ever int in int list, check the chip with that ID
-                for (Integer i: q5IDList) {
-                    CrohnsQ5.check(i);
-                }
-            }
+            //update the view
+            updateSurvey(q1, q2, q3, q4, q5, q6, q7);
         }
 
         //Bottom navigation bar set up
@@ -149,6 +105,10 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
         //add on click listener to the save button
         Button btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(this);
+
+        //add on click listener to previous day button
+        Button btnPreviousDay = findViewById(R.id.btnPreviousDay);
+        btnPreviousDay.setOnClickListener(this);
 
         //set the click listeners for each of the nav bar items
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -206,7 +166,8 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                 //calculate the deviation from the standard weight
                 //get the typical weight from shared preferences
                 float typicalWeight = sharedPreferences.getFloat(MainActivity.TYPICAL_WEIGHT_KEY, 0.0f);
-                float CrohnsQ7Answer = (weight - typicalWeight)/(typicalWeight * 100);
+                float CrohnsQ7Answer = Math.round((weight - typicalWeight)/typicalWeight);
+                CrohnsQ7Answer = Math.abs(CrohnsQ7Answer);
 
                 //setup floats for each of the other answers
                 float CrohnsQ2Answer;
@@ -316,6 +277,9 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                         CrohnsQ5IDString,
                         weight);
 
+                //update the date
+                response.setDate(currentDateString);
+
                 //check if the response exists in the response database
                 boolean exists = CrohnsResponseRepository.getRepository(getApplicationContext()).exists(response);
 
@@ -327,6 +291,50 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                     CrohnsResponseRepository.getRepository(getApplicationContext()).storeCrohnsResponse(response);
                 }
             }
+        }
+
+        else if(view.getId() == R.id.btnPreviousDay) {
+            //subtract one day from the current day, update the current day string
+            currentDate = currentDate.minusDays(1);
+            currentDateString = currentDate.toString();
+
+            //get the list of all survey responses
+            List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponses();
+
+            //find a survey with the current date
+            CrohnsSurveyResponse response = responseList.stream()
+                    .filter(r -> currentDateString.equals(r.getDate()))
+                    .findAny()
+                    .orElse(null);
+
+            //if there is nothing in saved instances and if there is a response for the date, update view to display answers
+            if(response !=null) {
+                //get all of the info neccessary to update the view from the response
+                String q1 = String.valueOf(response.getCrohnsQ1());
+                int q2 = response.getCrohnsQ2ID();
+                int q3 = response.getCrohnsQ3ID();
+                int q4 = response.getCrohnsQ4ID();
+                String q5 = response.getCrohnsQ5ID();
+                int q6 = response.getCrohnsQ6ID();
+                String q7 = String.valueOf(response.getWeight());
+
+                //update the layout
+                updateSurvey(q1, q2, q3, q4, q5 ,q6, q7);
+
+                //update the date text view
+                TextView tvSurveyDate = findViewById(R.id.tvSurveyDate);
+                tvSurveyDate.setText("Response for: " + currentDateString);
+            }
+            //otherwise, there is no entry for the day so reset changes to current date and notify user
+            else {
+                currentDate = currentDate.plusDays(1);
+                currentDateString = currentDate.toString();
+
+                //make toast to alert user
+                Toast t = Toast.makeText(getApplicationContext(), "You can only go as far back as the date of first use.", Toast.LENGTH_LONG);
+                t.show();
+            }
+
         }
     }
 
@@ -370,5 +378,55 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
         outState.putInt(CROHNS_Q6_SAVE, CrohnsQ6AnswerID);
 
         outState.putString(CROHNS_Q5_SAVE, CrohnsQ5IDString);
+    }
+
+    /**
+     * a method to update the survey with given info
+     * @param q1 the string for q1
+     * @param q2 the checked option of q2
+     * @param q3 the checked option of q3
+     * @param q4 the checked option of q4
+     * @param q5 the string format of all checked ids for q5
+     * @param q6 the checked option of q6
+     * @param q7 the string for q7
+     */
+    public void updateSurvey(String q1, int q2, int q3, int q4, String q5, int q6, String q7) {
+        //find all of the questions from the view
+        EditText CrohnsQ1 = findViewById(R.id.numberCrohnsQ1);
+        RadioGroup CrohnsQ2 = findViewById(R.id.rgCrohnsQ2);
+        RadioGroup CrohnsQ3 = findViewById(R.id.rgCrohnsQ3);
+        RadioGroup CrohnsQ4 = findViewById(R.id.rgCrohnsQ4);
+        ChipGroup CrohnsQ5 = findViewById(R.id.cgCrohnsQ5);
+        RadioGroup CrohnsQ6 = findViewById(R.id.rgCrohnsQ6);
+        EditText CrohnsQ7 = findViewById(R.id.numberCrohnsQ7);
+
+        //set the edit text views with their respective answer
+        CrohnsQ1.setText(q1);
+        CrohnsQ7.setText(q7);
+
+        //check the radio buttons
+        CrohnsQ2.check(q2);
+        CrohnsQ3.check(q3);
+        CrohnsQ4.check(q4);
+        CrohnsQ6.check(q6);
+
+        //if the string isn't empty or null
+        if(!q5.isEmpty() && !q5.equals(null)) {
+            //seperate the string into a list of strings, splitting by comma and space
+            List<String> q5StringList = new ArrayList<String>(Arrays.asList(q5.split(", ")));
+
+            //create a list to store ints
+            List<Integer> q5IDList = new ArrayList<Integer>();
+
+            //for each string in the list, convert to int and add to int list
+            for(String s: q5StringList) {
+                q5IDList.add(Integer.valueOf(s));
+            }
+
+            //for ever int in int list, check the chip with that ID
+            for (Integer i: q5IDList) {
+                CrohnsQ5.check(i);
+            }
+        }
     }
 }
