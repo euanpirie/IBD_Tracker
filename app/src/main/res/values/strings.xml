@@ -57,6 +57,35 @@
     <string name="crohns_q6_a2">Possible mass discovered</string>
     <string name="crohns_q6_a3">Definite mass discovered</string>
 
+
+    <!--Colitis survey strings -->
+    <string name="colitis_q1">How frequent have your bowel movements been throughout the DAY?</string>
+    <string name="colitis_q1_a1">0-3 movements</string>
+    <string name="colitis_q1_a2">4-6 movements</string>
+    <string name="colitis_q1_a3">7-9 movements</string>
+    <string name="colitis_q1_a4">More then 9 movements</string>
+
+    <string name="colitis_q2">How frequent have your bowel movements been throughout the NIGHT?</string>
+    <string name="colitis_q2_a1">0 movements</string>
+    <string name="colitis_q2_a2">1-3 movements</string>
+    <string name="colitis_q2_a3">More than 3 movements</string>
+
+    <string name="colitis_q3">When you need to have a bowel movement, how urgent do you feel it is?</string>
+    <string name="colitis_q3_a1">No urgency</string>
+    <string name="colitis_q3_a2">Slight urgency</string>
+    <string name="colitis_q3_a3">Immediate need (toilet is nearby)</string>
+    <string name="colitis_q3_a4">Lack of voluntary control</string>
+
+    <string name="colitis_q4">On a scale of 0-10 - 0 being terrible and 10 being amazing - how
+    has your has your general wellbeing been over the last 24 hours?</string>
+    <string name="colitis_q4_hint">0-10</string>
+
+    <string name="colitis_q5">Are you experiencing any of the following complications? (Check all that apply)</string>
+    <string name="colitis_q5_a1">Joint pain</string>
+    <string name="colitis_q5_a2">Irritation and/or swelling of the eye</string>
+    <string name="colitis_q5_a3">Red patches and/or large bumps on the skin</string>
+    <string name="colitis_q5_a4">A new/rapidly growing painful ulcer on your skin</string>
+
     <!-- shared survey strings -->
     <string name="shared_q1">What is your current weight? (KGs)</string>
     <string name="shared_q1_hint">Weight in kilograms</string>

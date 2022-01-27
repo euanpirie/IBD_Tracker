@@ -79,10 +79,13 @@ public class CrohnsDashboardActivity extends AppCompatActivity implements View.O
             index++;
         }
 
-        staticLabelsFormatter.setHorizontalLabels(dates);
-        series2.setAnimated(true);
-        graph.addSeries(series2);
-        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+        if(!(dates.length < 2)) {
+            staticLabelsFormatter.setHorizontalLabels(dates);
+            series2.setAnimated(true);
+            graph.addSeries(series2);
+            graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+        }
+
 
         //Bottom navigation bar set up
         BottomNavigationView bottomNav = findViewById(R.id.bnvNavigation); //initialising and assigning the bottomNav variable
