@@ -1,4 +1,4 @@
-package com.example.ibdtracker;
+package com.example.ibdtracker.Colitis;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.ibdtracker.AppSettingsActivity;
+import com.example.ibdtracker.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ColitisDashboardActivity extends AppCompatActivity {

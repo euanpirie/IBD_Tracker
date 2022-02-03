@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 import android.content.SharedPreferences;
+
+import com.example.ibdtracker.Colitis.ColitisDashboardActivity;
+import com.example.ibdtracker.Crohns.CrohnsDashboardActivity;
 
 import java.time.LocalDate;
 

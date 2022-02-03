@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ibdtracker.Colitis.ColitisDashboardActivity;
+import com.example.ibdtracker.Crohns.CrohnsDashboardActivity;
+
 public class WeightEntryActivity extends AppCompatActivity implements View.OnClickListener{
 
     private SharedPreferences sharedPreferences; //the users saved preferences

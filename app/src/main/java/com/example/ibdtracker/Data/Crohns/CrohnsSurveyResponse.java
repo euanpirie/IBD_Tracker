@@ -1,4 +1,4 @@
-package com.example.ibdtracker.Data;
+package com.example.ibdtracker.Data.Crohns;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * Stores the answers to the crohns survey as the numbers
  * outlined in the crohns disease activityu index
- *
+ * Also stores IDs of selected answers neccessary to update the views
  */
 @Entity(tableName = "CrohnsSurveyResponse")
 public class CrohnsSurveyResponse {
@@ -40,13 +40,13 @@ public class CrohnsSurveyResponse {
 
     /**
      * A constructor for a crohns survey response
-     * @param CrohnsQ1 The numberic value obtained from the answer
-     * @param CrohnsQ2 The numberic value obtained from the answer
-     * @param CrohnsQ3 The numberic value obtained from the answer
-     * @param CrohnsQ4 The numberic value obtained from the answer
-     * @param CrohnsQ5 The numberic value obtained from the answer
-     * @param CrohnsQ6 The numberic value obtained from the answer
-     * @param CrohnsQ7 The numberic value obtained from the answer
+     * @param CrohnsQ1 The numeric value obtained from the answer
+     * @param CrohnsQ2 The numeric value obtained from the answer
+     * @param CrohnsQ3 The numeric value obtained from the answer
+     * @param CrohnsQ4 The numeric value obtained from the answer
+     * @param CrohnsQ5 The numeric value obtained from the answer
+     * @param CrohnsQ6 The numeric value obtained from the answer
+     * @param CrohnsQ7 The numeric value obtained from the answer
      * @param CrohnsQ2ID the ID of the selected radio button for the question
      * @param CrohnsQ3ID the ID of the selected radio button for the question
      * @param CrohnsQ4ID the ID of the selected radio button for the question
@@ -76,6 +76,7 @@ public class CrohnsSurveyResponse {
     }
 
     // ------------------------- GETTERS ---------------------------
+    @NonNull
     public String getDate() {
         return date;
     }

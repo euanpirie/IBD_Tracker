@@ -1,4 +1,4 @@
-package com.example.ibdtracker;
+package com.example.ibdtracker.Crohns;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ibdtracker.AI.RuleBasedSystem;
-import com.example.ibdtracker.Data.CrohnsResponseRepository;
-import com.example.ibdtracker.Data.CrohnsSurveyResponse;
+import com.example.ibdtracker.AppSettingsActivity;
+import com.example.ibdtracker.Data.Crohns.CrohnsResponseRepository;
+import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
+import com.example.ibdtracker.MainActivity;
+import com.example.ibdtracker.R;
+import com.example.ibdtracker.SelectorActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
@@ -43,7 +46,7 @@ public class CrohnsDashboardActivity extends AppCompatActivity implements View.O
         btnPredictCrohns.setOnClickListener(this);
 
         //get the list of all survey responses
-        List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponses();
+        List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponsesSorted();
 
         List<Float> weights = new ArrayList<Float>();
         String[] dates = new String[responseList.size()];
@@ -84,8 +87,11 @@ public class CrohnsDashboardActivity extends AppCompatActivity implements View.O
             series2.setAnimated(true);
             graph.addSeries(series2);
             graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
-        }
 
+
+        }
+        graph.getViewport().setScalable(true);
+        graph.getViewport().setScrollable(true);
 
         //Bottom navigation bar set up
         BottomNavigationView bottomNav = findViewById(R.id.bnvNavigation); //initialising and assigning the bottomNav variable

@@ -1,4 +1,4 @@
-package com.example.ibdtracker;
+package com.example.ibdtracker.Crohns;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +14,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ibdtracker.AI.RuleBasedSystem;
-import com.example.ibdtracker.Data.CrohnsResponseRepository;
-import com.example.ibdtracker.Data.CrohnsSurveyResponse;
+import com.example.ibdtracker.AppSettingsActivity;
+import com.example.ibdtracker.Data.Crohns.CrohnsResponseRepository;
+import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
+import com.example.ibdtracker.MainActivity;
+import com.example.ibdtracker.R;
+import com.example.ibdtracker.SelectorActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.ChipGroup;
 
@@ -136,16 +139,17 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.btnSave) {
 
-            //find all of the questions from the view
-            EditText CrohnsQ1 = findViewById(R.id.numberCrohnsQ1);
-            RadioGroup CrohnsQ2 = findViewById(R.id.rgCrohnsQ2);
-            RadioGroup CrohnsQ3 = findViewById(R.id.rgCrohnsQ3);
-            RadioGroup CrohnsQ4 = findViewById(R.id.rgCrohnsQ4);
-            ChipGroup CrohnsQ5 = findViewById(R.id.cgCrohnsQ5);
-            RadioGroup CrohnsQ6 = findViewById(R.id.rgCrohnsQ6);
-            EditText CrohnsQ7 = findViewById(R.id.numberCrohnsQ7);
+        //find all of the questions from the view
+        EditText CrohnsQ1 = findViewById(R.id.numberCrohnsQ1);
+        RadioGroup CrohnsQ2 = findViewById(R.id.rgCrohnsQ2);
+        RadioGroup CrohnsQ3 = findViewById(R.id.rgCrohnsQ3);
+        RadioGroup CrohnsQ4 = findViewById(R.id.rgCrohnsQ4);
+        ChipGroup CrohnsQ5 = findViewById(R.id.cgCrohnsQ5);
+        RadioGroup CrohnsQ6 = findViewById(R.id.rgCrohnsQ6);
+        EditText CrohnsQ7 = findViewById(R.id.numberCrohnsQ7);
+
+        if(view.getId() == R.id.btnSave) {
 
             //get the string version of the free text inputs
             String CrohnsQ1AnswerString = String.valueOf(CrohnsQ1.getText());
@@ -320,19 +324,18 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
 
                 //update the layout
                 updateSurvey(q1, q2, q3, q4, q5 ,q6, q7);
-
-                //update the date text view
-                TextView tvSurveyDate = findViewById(R.id.tvSurveyDate);
-                tvSurveyDate.setText("Response for: " + currentDateString);
             }
             //otherwise, there is no entry for the day so reset changes to current date and notify user
             else {
-                currentDate = currentDate.plusDays(1);
-                currentDateString = currentDate.toString();
+//                currentDate = currentDate.plusDays(1);
+//                currentDateString = currentDate.toString();
+//
+//                //make toast to alert user
+//                Toast t = Toast.makeText(getApplicationContext(), "You can only go as far back as the date of first use.", Toast.LENGTH_LONG);
+//                t.show();
+                updateSurvey("", R.id.rbCrohnsQ2A1, R.id.rbCrohnsQ3A1, R.id.rbCrohnsQ4A1, "", R.id.rbCrohnsQ6A1, "");
 
-                //make toast to alert user
-                Toast t = Toast.makeText(getApplicationContext(), "You can only go as far back as the date of first use.", Toast.LENGTH_LONG);
-                t.show();
+
             }
 
         }
@@ -428,5 +431,13 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                 CrohnsQ5.check(i);
             }
         }
+        //if the string is empty, uncheck all
+        else {
+            CrohnsQ5.clearCheck();
+        }
+
+        //update the date text view
+        TextView tvSurveyDate = findViewById(R.id.tvSurveyDate);
+        tvSurveyDate.setText("Response for: " + currentDateString);
     }
 }

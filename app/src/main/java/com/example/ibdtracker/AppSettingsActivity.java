@@ -15,8 +15,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ibdtracker.Data.CrohnsResponseRepository;
-import com.example.ibdtracker.Data.CrohnsSurveyResponse;
+import com.example.ibdtracker.Colitis.ColitisDashboardActivity;
+import com.example.ibdtracker.Colitis.ColitisSurveyActivity;
+import com.example.ibdtracker.Crohns.CrohnsDashboardActivity;
+import com.example.ibdtracker.Crohns.CrohnsSurveyActivity;
+import com.example.ibdtracker.Data.Crohns.CrohnsResponseRepository;
+import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;

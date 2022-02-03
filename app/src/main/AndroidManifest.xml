@@ -13,16 +13,16 @@
             android:name=".WeightEntryActivity"
             android:exported="false" />
         <activity
-            android:name=".ColitisSurveyActivity"
+            android:name=".Colitis.ColitisSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".CrohnsSurveyActivity"
+            android:name=".Crohns.CrohnsSurveyActivity"
             android:exported="false" />
         <activity
-            android:name=".CrohnsDashboardActivity"
+            android:name=".Crohns.CrohnsDashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".ColitisDashboardActivity"
+            android:name=".Colitis.ColitisDashboardActivity"
             android:exported="false" />
         <activity
             android:name=".AppSettingsActivity"

@@ -1,4 +1,4 @@
-package com.example.ibdtracker.Data;
+package com.example.ibdtracker.Data.Crohns;
 
 import android.content.Context;
 import androidx.room.Database;
@@ -13,8 +13,8 @@ public abstract class CrohnsSurveyDatabase extends RoomDatabase {
     private static CrohnsSurveyDatabase INSTANCE = null; //instance of the database
 
     /**
-     * Returns a database of crohns survet responses
-     * @param context the contect the app is working in
+     * Returns a database of crohns survey responses
+     * @param context the context the app is working in
      * @return the database of responses
      */
     public static  CrohnsSurveyDatabase getDatabase(final Context context) {

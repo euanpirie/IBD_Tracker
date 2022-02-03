@@ -1,13 +1,11 @@
-package com.example.ibdtracker.Data;
+package com.example.ibdtracker.Data.Crohns;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Dao
@@ -20,7 +18,7 @@ public interface CrohnsSurveyDao {
     void update(CrohnsSurveyResponse response); //update existing response in room db
 
     @Query("DELETE FROM CrohnsSurveyResponse WHERE date LIKE :date")
-    void delete(String date); //delete response episode in db
+    void delete(String date); //delete response in db
 
     @Query("SELECT * from CrohnsSurveyResponse")
     List<CrohnsSurveyResponse> getAllResponses(); //get all entries in db
@@ -33,5 +31,8 @@ public interface CrohnsSurveyDao {
 
     @Query("SELECT * FROM CrohnsSurveyResponse WHERE date LIKE :date")
     CrohnsSurveyResponse getFromDate(String date); //get the survey with the matching date
+
+    @Query("SELECT * FROM CrohnsSurveyResponse ORDER BY date ASC")
+    List<CrohnsSurveyResponse> getAllResponsesSorted();
 
 }

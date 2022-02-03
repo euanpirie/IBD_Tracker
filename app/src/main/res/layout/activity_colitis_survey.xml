@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ColitisSurveyActivity">
+    tools:context=".Colitis.ColitisSurveyActivity">
 
     <TextView
         android:id="@+id/tvColitisSurveyHeading"
@@ -76,40 +76,6 @@
                 app:layout_constraintStart_toEndOf="@+id/btnPreviousDay"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioGroup
-                android:id="@+id/rgColitisQ1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvColitisQ1">
-
-                <RadioButton
-                    android:id="@+id/rbColitisQ1A1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colitis_q1_a1" />
-
-                <RadioButton
-                    android:id="@+id/rbColitisQ1A2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colitis_q1_a2" />
-
-                <RadioButton
-                    android:id="@+id/rbColitisQ1A3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colitis_q1_a3" />
-
-                <RadioButton
-                    android:id="@+id/rbColitisQ1A4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colitis_q1_a4" />
-            </RadioGroup>
-
             <TextView
                 android:id="@+id/tvColitisQ2"
                 android:layout_width="0dp"
@@ -122,35 +88,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rgColitisQ1" />
-
-            <RadioGroup
-                android:id="@+id/rgColitisQ2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvColitisQ2" >
-
-                <RadioButton
-                    android:id="@+id/rbColitisQ2A1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colitis_q2_a1" />
-
-                <RadioButton
-                    android:id="@+id/rbColitisQ2A2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colitis_q2_a2" />
-
-                <RadioButton
-                    android:id="@+id/rbColitisQ2A3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/colitis_q2_a3" />
-            </RadioGroup>
+                app:layout_constraintTop_toBottomOf="@+id/numberColitisQ1A" />
 
             <TextView
                 android:id="@+id/tvColitisQ3"
@@ -164,7 +102,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rgColitisQ2" />
+                app:layout_constraintTop_toBottomOf="@+id/numberColitisQ2" />
 
             <RadioGroup
                 android:id="@+id/rgColitisQ3"
@@ -302,8 +240,10 @@
                 android:ems="10"
                 android:hint="@string/shared_q1_hint"
                 android:inputType="numberDecimal"
+                android:minHeight="48dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvColitisQ6" />
+                app:layout_constraintTop_toBottomOf="@+id/tvColitisQ6"
+                android:importantForAutofill="no" />
 
             <Button
                 android:id="@+id/btnSave"
@@ -316,6 +256,34 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/numberWeight" />
+
+            <EditText
+                android:id="@+id/numberColitisQ1A"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="@string/colitis_q1_hint"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvColitisQ1" />
+
+            <EditText
+                android:id="@+id/numberColitisQ2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="@string/colitis_q1_hint"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvColitisQ2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.ibdtracker.Data;
+package com.example.ibdtracker.Data.Crohns;
 
 import android.content.Context;
 
@@ -89,5 +89,13 @@ public class CrohnsResponseRepository {
      */
     public CrohnsSurveyResponse getFromDate(String date) {
         return this.crohnsSurveyDao.getFromDate(date);
+    }
+
+    /**
+     * Return all responses sorted by date (ascending)
+     * @return the list of all responses sorted by date
+     */
+    public List<CrohnsSurveyResponse> getAllResponsesSorted() {
+        return this.crohnsSurveyDao.getAllResponsesSorted();
     }
 }

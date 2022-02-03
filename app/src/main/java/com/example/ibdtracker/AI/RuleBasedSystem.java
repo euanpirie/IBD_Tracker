@@ -1,7 +1,6 @@
 package com.example.ibdtracker.AI;
 
-import com.example.ibdtracker.Data.CrohnsSurveyResponse;
-import com.example.ibdtracker.MainActivity;
+import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
 
 /**
  * The rule based system that will predict the status of the users IBD

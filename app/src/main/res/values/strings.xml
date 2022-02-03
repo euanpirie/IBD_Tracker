@@ -60,10 +60,7 @@
 
     <!--Colitis survey strings -->
     <string name="colitis_q1">How frequent have your bowel movements been throughout the DAY?</string>
-    <string name="colitis_q1_a1">0-3 movements</string>
-    <string name="colitis_q1_a2">4-6 movements</string>
-    <string name="colitis_q1_a3">7-9 movements</string>
-    <string name="colitis_q1_a4">More then 9 movements</string>
+    <string name="colitis_q1_hint">Non-negative whole number</string>
 
     <string name="colitis_q2">How frequent have your bowel movements been throughout the NIGHT?</string>
     <string name="colitis_q2_a1">0 movements</string>
