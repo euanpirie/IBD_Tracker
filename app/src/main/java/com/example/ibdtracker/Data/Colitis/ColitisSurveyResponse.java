@@ -20,16 +20,18 @@ public class ColitisSurveyResponse {
     private String date; //date the survey was taken on
 
     //class fields
-    private float ColitisQ1; //the numeric value of Q1
-    private float ColitisQ2; //the numeric value of Q2
+    private int ColitisQ1; //the answer to q1
+    private int ColitisQ2; //the answer to q1
     private float ColitisQ3; //the numeric value of Q3
-    private float ColitisQ4; //the numeric value of Q4
+    private int ColitisQ4; //the answer to q4
     private float ColitisQ5; //the numeric value of Q5
+    public float ColitisQ6;//the numeric value of q6
 
     private float weight; //the weight entered in question 6
 
     private int ColitisQ3ID; //the selected radio button of Q3
     private String ColitisQ5IDs; // the selected chip buttons of Q5
+    private int ColitisQ6ID; //the selected radio button of q6
 
     /**
      * The constructor for a colitis survey response
@@ -42,18 +44,20 @@ public class ColitisSurveyResponse {
      * @param ColitisQ3ID the selected radio button of q3
      * @param ColitisQ5IDs the selected chip buttons of q5
      */
-    public ColitisSurveyResponse(float ColitisQ1, float ColitisQ2, float ColitisQ3, float ColitisQ4, float ColitisQ5, float weight,
-                                 int ColitisQ3ID, String ColitisQ5IDs) {
+    public ColitisSurveyResponse(int ColitisQ1, int ColitisQ2, float ColitisQ3, int ColitisQ4, float ColitisQ5, float ColitisQ6, float weight,
+                                 int ColitisQ3ID, String ColitisQ5IDs, int ColitisQ6ID) {
         this.ColitisQ1 = ColitisQ1;
         this.ColitisQ2 = ColitisQ2;
         this.ColitisQ3 = ColitisQ3;
         this.ColitisQ4 = ColitisQ4;
         this.ColitisQ5 = ColitisQ5;
+        this.ColitisQ6 = ColitisQ6;
 
         this.weight = weight;
 
         this.ColitisQ3ID = ColitisQ3ID;
         this.ColitisQ5IDs = ColitisQ5IDs;
+        this.ColitisQ6ID = ColitisQ6ID;
 
         this.date = LocalDate.now().toString();
     }
@@ -61,11 +65,11 @@ public class ColitisSurveyResponse {
     //------------ GETTERS --------------
 
 
-    public float getColitisQ1() {
+    public int getColitisQ1() {
         return ColitisQ1;
     }
 
-    public float getColitisQ2() {
+    public int getColitisQ2() {
         return ColitisQ2;
     }
 
@@ -73,7 +77,7 @@ public class ColitisSurveyResponse {
         return ColitisQ3;
     }
 
-    public float getColitisQ4() {
+    public int getColitisQ4() {
         return ColitisQ4;
     }
 
@@ -93,6 +97,14 @@ public class ColitisSurveyResponse {
         return ColitisQ5IDs;
     }
 
+    public float getColitisQ6() {
+        return ColitisQ6;
+    }
+
+    public int getColitisQ6ID() {
+        return ColitisQ6ID;
+    }
+
     @NonNull
     public String getDate() {
         return date;
@@ -101,11 +113,11 @@ public class ColitisSurveyResponse {
     //------------ SETTERS ------------
 
 
-    public void setColitisQ1(float colitisQ1) {
+    public void setColitisQ1(int colitisQ1) {
         ColitisQ1 = colitisQ1;
     }
 
-    public void setColitisQ2(float colitisQ2) {
+    public void setColitisQ2(int colitisQ2) {
         ColitisQ2 = colitisQ2;
     }
 
@@ -117,7 +129,7 @@ public class ColitisSurveyResponse {
         ColitisQ3ID = colitisQ3ID;
     }
 
-    public void setColitisQ4(float colitisQ4) {
+    public void setColitisQ4(int colitisQ4) {
         ColitisQ4 = colitisQ4;
     }
 
@@ -127,6 +139,14 @@ public class ColitisSurveyResponse {
 
     public void setColitisQ5IDs(String colitisQ5IDs) {
         ColitisQ5IDs = colitisQ5IDs;
+    }
+
+    public void setColitisQ6(float colitisQ6) {
+        ColitisQ6 = colitisQ6;
+    }
+
+    public void setColitisQ6ID(int colitisQ6ID) {
+        ColitisQ6ID = colitisQ6ID;
     }
 
     public void setDate(@NonNull String date) {

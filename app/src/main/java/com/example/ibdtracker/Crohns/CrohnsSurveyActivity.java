@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ibdtracker.AppSettingsActivity;
+import com.example.ibdtracker.Data.Colitis.ColitisSurveyResponse;
 import com.example.ibdtracker.Data.Crohns.CrohnsResponseRepository;
 import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
 import com.example.ibdtracker.MainActivity;
@@ -63,27 +64,17 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
         tvSurveyDate.setText("Response for: " + currentDateString);
 
         //get the list of all survey responses
-        List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponses();
+        List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponsesSorted();
 
         //find a survey with todays date
         CrohnsSurveyResponse response = responseList.stream()
-                .filter(test -> LocalDate.now().toString().equals(test.getDate()))
+                .filter(r -> LocalDate.now().toString().equals(r.getDate()))
                 .findAny()
                 .orElse(null);
 
         //if there is nothing in saved instances and if there is a response for the date, update view to display answers
         if(savedInstanceState == null && response !=null) {
-            //get all of the info neccessary to update the view from the response
-            String q1 = String.valueOf(response.getCrohnsQ1());
-            int q2 = response.getCrohnsQ2ID();
-            int q3 = response.getCrohnsQ3ID();
-            int q4 = response.getCrohnsQ4ID();
-            String q5 = response.getCrohnsQ5ID();
-            int q6 = response.getCrohnsQ6ID();
-            String q7 = String.valueOf(response.getWeight());
-
-            //update the layout
-            updateSurvey(q1, q2, q3, q4, q5 ,q6, q7);
+            updateSurveyWithResponse(response);
         }
 
         //if there is something saved in saved instances
@@ -101,6 +92,17 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
             updateSurvey(q1, q2, q3, q4, q5, q6, q7);
         }
 
+        //if the response list isn't empty and isnt' null
+        if(!responseList.isEmpty() && responseList != null) {
+            //get the latest response from the response list
+            CrohnsSurveyResponse latestResponse = responseList.get(responseList.size() - 1);
+
+            //if there is a response after the systems current date, notify the user
+            if(latestResponse != null && LocalDate.now().isBefore(LocalDate.parse(latestResponse.getDate()))) {
+                showToast("There is a response for a date later than your systems current date. Please keep this in mind.", Toast.LENGTH_LONG);
+            }
+        }
+
         //Bottom navigation bar set up
         BottomNavigationView bottomNav = findViewById(R.id.bnvNavigation); //initialising and assigning the bottomNav variable
         bottomNav.setSelectedItemId(R.id.navSurvey); //setting the selected item in the nav bar
@@ -112,6 +114,10 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
         //add on click listener to previous day button
         Button btnPreviousDay = findViewById(R.id.btnPreviousDay);
         btnPreviousDay.setOnClickListener(this);
+
+        //add on click listener to next day button
+        Button btnNextDay = findViewById(R.id.btnNextDay);
+        btnNextDay.setOnClickListener(this);
 
         //set the click listeners for each of the nav bar items
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -137,6 +143,10 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
         });
     }
 
+    /**
+     * On click method for various View items
+     * @param view the item that has been pressed/clicked
+     */
     @Override
     public void onClick(View view) {
 
@@ -152,19 +162,23 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
         if(view.getId() == R.id.btnSave) {
 
             //get the string version of the free text inputs
-            String CrohnsQ1AnswerString = String.valueOf(CrohnsQ1.getText());
-            String CrohnsQ7AnswerString = String.valueOf(CrohnsQ7.getText());
+            String CrohnsQ1AnswerString = CrohnsQ1.getText().toString();
+            String CrohnsQ7AnswerString = CrohnsQ7.getText().toString();
 
             //if the strings are invalid, show an error message
             if(CrohnsQ1AnswerString.isEmpty() || CrohnsQ1AnswerString == null || CrohnsQ7AnswerString.isEmpty() || CrohnsQ7AnswerString == null) {
-                Toast toast =  Toast.makeText(this.getApplicationContext(), "Please answer every question", Toast.LENGTH_SHORT);
-                toast.show();
+                showToast("Please answer all questions", Toast.LENGTH_LONG);
+            }
+
+            //if the numeric answers are invalid show an error message
+            else if(Integer.valueOf(CrohnsQ1AnswerString) < 0 || Float.parseFloat(CrohnsQ7AnswerString) < 0) {
+                showToast("Please enter valid numbers.", Toast.LENGTH_LONG);
             }
 
             //otherwise
             else {
                 //convert the 2 strings to their respective answers
-                float CrohnsQ1Answer = Float.parseFloat(CrohnsQ1AnswerString);
+                int CrohnsQ1Answer = Integer.valueOf(CrohnsQ1AnswerString);
                 float weight = Float.parseFloat(CrohnsQ7AnswerString);
 
                 //calculate the deviation from the standard weight
@@ -192,7 +206,7 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                 //set the score depending on the selected value
                 switch(CrohnsQ2AnswerID) {
                     case R.id.rbCrohnsQ2A1:
-                        CrohnsQ2Answer = 30.0f;
+                        CrohnsQ2Answer = 1.0f;
                         break;
                     case R.id.rbCrohnsQ2A2:
                         CrohnsQ2Answer = 0.0f;
@@ -208,13 +222,13 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                         CrohnsQ3Answer = 0.0f;
                         break;
                     case R.id.rbCrohnsQ3A2:
-                        CrohnsQ3Answer = 35.0f;
+                        CrohnsQ3Answer = 1.0f;
                         break;
                     case R.id.rbCrohnsQ3A3:
-                        CrohnsQ3Answer = 70.0f;
+                        CrohnsQ3Answer = 2.0f;
                         break;
                     case R.id.rbCrohnsQ3A4:
-                        CrohnsQ3Answer = 105.0f;
+                        CrohnsQ3Answer = 3.0f;
                         break;
                     default:
                         CrohnsQ3Answer = 0.0f;
@@ -227,16 +241,16 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                         CrohnsQ4Answer = 0.0f;
                         break;
                     case R.id.rbCrohnsQ4A2:
-                        CrohnsQ4Answer = 49.0f;
+                        CrohnsQ4Answer = 1.0f;
                         break;
                     case R.id.rbCrohnsQ4A3:
-                        CrohnsQ4Answer = 98.0f;
+                        CrohnsQ4Answer = 2.0f;
                         break;
                     case R.id.rbCrohnsQ4A4:
-                        CrohnsQ4Answer = 147.0f;
+                        CrohnsQ4Answer = 3.0f;
                         break;
                     case R.id.rbCrohnsQ4A5:
-                        CrohnsQ4Answer = 196.0f;
+                        CrohnsQ4Answer = 4.0f;
                         break;
                     default:
                         CrohnsQ4Answer = 0.0f;
@@ -244,7 +258,7 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                 }
 
                 //multiply the size of the list by 20 to get the final score
-                CrohnsQ5Answer = CrohnsQ5AnswerID.size() * 20.0f;
+                CrohnsQ5Answer = CrohnsQ5AnswerID.size();
 
                 //convert the selected chip IDS into a string - removing the []
                 String CrohnsQ5IDString = CrohnsQ5AnswerID.toString();
@@ -297,6 +311,7 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
             }
         }
 
+        //if the previous day button was pressed
         else if(view.getId() == R.id.btnPreviousDay) {
             //subtract one day from the current day, update the current day string
             currentDate = currentDate.minusDays(1);
@@ -313,29 +328,45 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
 
             //if there is nothing in saved instances and if there is a response for the date, update view to display answers
             if(response !=null) {
-                //get all of the info neccessary to update the view from the response
-                String q1 = String.valueOf(response.getCrohnsQ1());
-                int q2 = response.getCrohnsQ2ID();
-                int q3 = response.getCrohnsQ3ID();
-                int q4 = response.getCrohnsQ4ID();
-                String q5 = response.getCrohnsQ5ID();
-                int q6 = response.getCrohnsQ6ID();
-                String q7 = String.valueOf(response.getWeight());
-
-                //update the layout
-                updateSurvey(q1, q2, q3, q4, q5 ,q6, q7);
+                updateSurveyWithResponse(response);
             }
-            //otherwise, there is no entry for the day so reset changes to current date and notify user
+            //otherwise, create a blank survey for the new date
             else {
-//                currentDate = currentDate.plusDays(1);
-//                currentDateString = currentDate.toString();
-//
-//                //make toast to alert user
-//                Toast t = Toast.makeText(getApplicationContext(), "You can only go as far back as the date of first use.", Toast.LENGTH_LONG);
-//                t.show();
                 updateSurvey("", R.id.rbCrohnsQ2A1, R.id.rbCrohnsQ3A1, R.id.rbCrohnsQ4A1, "", R.id.rbCrohnsQ6A1, "");
+            }
+        }
 
+        //if the next day button was pressed
+        else if(view.getId() == R.id.btnNextDay) {
+            //add one day to current date and update string
+            currentDate = currentDate.plusDays(1);
+            currentDateString = currentDate.toString();
 
+            //get the list of all survey responses
+            List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponses();
+
+            //find a survey with the current date
+            CrohnsSurveyResponse response = responseList.stream()
+                    .filter(r -> currentDateString.equals(r.getDate()))
+                    .findAny()
+                    .orElse(null);
+
+            //if there is a response update the view
+            if(response !=null) {
+                updateSurveyWithResponse(response);
+            }
+
+            //if there is no response, and the new date is after the system date, undo changes to date and display error
+            else if(currentDate.isAfter(LocalDate.now())) {
+                currentDate = currentDate.minusDays(1);
+                currentDateString = currentDate.toString();
+
+                showToast("You can't go past this date.", Toast.LENGTH_LONG);
+            }
+
+            //otherwise updaye the layout
+            else {
+                updateSurvey("", R.id.rbCrohnsQ2A1, R.id.rbCrohnsQ3A1, R.id.rbCrohnsQ4A1, "", R.id.rbCrohnsQ6A1, "");
             }
 
         }
@@ -439,5 +470,34 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
         //update the date text view
         TextView tvSurveyDate = findViewById(R.id.tvSurveyDate);
         tvSurveyDate.setText("Response for: " + currentDateString);
+    }
+
+    /**
+     * Update the layout using a response object
+     * @param response
+     */
+    public void updateSurveyWithResponse(CrohnsSurveyResponse response) {
+        //get all of the info neccessary to update the view from the response
+        String q1 = String.valueOf(response.getCrohnsQ1());
+        int q2 = response.getCrohnsQ2ID();
+        int q3 = response.getCrohnsQ3ID();
+        int q4 = response.getCrohnsQ4ID();
+        String q5 = response.getCrohnsQ5ID();
+        int q6 = response.getCrohnsQ6ID();
+        String q7 = String.valueOf(response.getWeight());
+
+        //update the layout
+        updateSurvey(q1, q2, q3, q4, q5 ,q6, q7);
+    }
+
+    /**
+     * A method to create and display a toast
+     * @param message the message to be shown
+     * @param length the length of the toast
+     */
+    public void showToast(String message, int length) {
+        //create a toast and display it
+        Toast toast = Toast.makeText(getApplicationContext(), message, length);
+        toast.show();
     }
 }

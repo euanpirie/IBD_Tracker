@@ -21,6 +21,7 @@
     <string name="survey_title">Symptom questionnaire</string>
     <string name="survey_info">Please answer the following questions by selecting a value from those provided. Explanations will be provided where necessary.</string>
     <string name="survey_previous_day">Previous day</string>
+    <string name="survey_next_day">Next day</string>
     <string name="survey_save">Save answers</string>
 
     <!-- survey crohns strings -->
@@ -59,13 +60,10 @@
 
 
     <!--Colitis survey strings -->
-    <string name="colitis_q1">How frequent have your bowel movements been throughout the DAY?</string>
+    <string name="colitis_q1">How many bowel movements have you had during the DAY?</string>
     <string name="colitis_q1_hint">Non-negative whole number</string>
 
-    <string name="colitis_q2">How frequent have your bowel movements been throughout the NIGHT?</string>
-    <string name="colitis_q2_a1">0 movements</string>
-    <string name="colitis_q2_a2">1-3 movements</string>
-    <string name="colitis_q2_a3">More than 3 movements</string>
+    <string name="colitis_q2">How many bowel movements have you had during the NIGHT?</string>
 
     <string name="colitis_q3">When you need to have a bowel movement, how urgent do you feel it is?</string>
     <string name="colitis_q3_a1">No urgency</string>
@@ -82,6 +80,12 @@
     <string name="colitis_q5_a2">Irritation and/or swelling of the eye</string>
     <string name="colitis_q5_a3">Red patches and/or large bumps on the skin</string>
     <string name="colitis_q5_a4">A new/rapidly growing painful ulcer on your skin</string>
+
+    <string name ="colitis_q6">Have you noticed any blood in any of your bowel movements?</string>
+    <string name="colitis_q6_a1">No blood</string>
+    <string name="colitis_q6_a2">Trace amount of blood</string>
+    <string name="colitis_q6_a3">Blood makes up less than half of bowel movement</string>
+    <string name="colitis_q6_a4">Blood makes up more than half of bowel movement</string>
 
     <!-- shared survey strings -->
     <string name="shared_q1">What is your current weight? (KGs)</string>
@@ -103,5 +107,21 @@
     <string name="settings_dialog_message">This can not be undone. Are you sure you want to continue?</string>
     <string name="settings_dialog_confirm">Delete data</string>
     <string name="settings_dialog_cancel">Cancel</string>
+
+    <string name="settings_ai_title">How does the AI work?</string>
+    <string name="settings_ai_explanation">
+        The AI is implemented by following a rule based approach. This is also known as a rule based system (RBS).
+    A RBS is a form of AI where all known outcomes are predetermined, with the outcome being chosen depending on a set of "rules" programmed into the system.
+        \n \n
+    The "rules" for the RBS in this app have been adapted from the Crohns Disease Activity Index (CDAI) and the Patient Simple Clinical Colitis Activity Index (PSCCAI)
+    These indexes are used by medical professionals to gauge the status of a patients IBD.
+        \n \n
+    This status is determined by answering a series of questions. These questions are the same ones found in the activity pages. Each answer represents a score,
+    with each question having its answers averaged over 7 days, with averages being rounded to a whole number. The average score for each question is then summed, resulting in a final score.
+        \n \n
+    The final score is then used to provide a classification.
+        \n \n
+    The indexes are available online, so it is possible to see how the scores are assigned to each question.
+    </string>
 
 </resources>

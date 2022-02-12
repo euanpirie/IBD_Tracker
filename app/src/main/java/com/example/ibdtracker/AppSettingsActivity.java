@@ -19,6 +19,7 @@ import com.example.ibdtracker.Colitis.ColitisDashboardActivity;
 import com.example.ibdtracker.Colitis.ColitisSurveyActivity;
 import com.example.ibdtracker.Crohns.CrohnsDashboardActivity;
 import com.example.ibdtracker.Crohns.CrohnsSurveyActivity;
+import com.example.ibdtracker.Data.Colitis.ColitisResponseRepository;
 import com.example.ibdtracker.Data.Crohns.CrohnsResponseRepository;
 import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -169,7 +170,9 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
                             editor.putFloat(MainActivity.TYPICAL_WEIGHT_KEY, 0);
                             editor.apply();
 
+                            //clear the databases
                             CrohnsResponseRepository.getRepository(getApplicationContext()).deleteAll();
+                            ColitisResponseRepository.getRepository(getApplicationContext()).deleteAll();
 
                             //close the app
                             finishAffinity();

@@ -21,7 +21,7 @@ public class CrohnsSurveyResponse {
     private String date; //date the survey was taken on
 
     //class fields
-    private float CrohnsQ1; //the numeric value of q1
+    private int CrohnsQ1; //the answer to q1
     private float CrohnsQ2; //the numeric value of q2
     private float CrohnsQ3; //the numeric value of q3
     private float CrohnsQ4; //the numeric value of q4
@@ -54,7 +54,7 @@ public class CrohnsSurveyResponse {
      * @param CrohnsQ5ID the ID(s) of the selected chip button(s) for the question
      * @param Weight the weight entered for question 7 - for dashboard purposes
      */
-    public CrohnsSurveyResponse(float CrohnsQ1, float CrohnsQ2, float CrohnsQ3, float CrohnsQ4,float CrohnsQ5, float CrohnsQ6, float CrohnsQ7,
+    public CrohnsSurveyResponse(int CrohnsQ1, float CrohnsQ2, float CrohnsQ3, float CrohnsQ4,float CrohnsQ5, float CrohnsQ6, float CrohnsQ7,
                                 int CrohnsQ2ID, int CrohnsQ3ID, int CrohnsQ4ID, int CrohnsQ6ID, String CrohnsQ5ID, float Weight) {
         this.CrohnsQ1 = CrohnsQ1;
         this.CrohnsQ2 = CrohnsQ2;
@@ -81,7 +81,7 @@ public class CrohnsSurveyResponse {
         return date;
     }
 
-    public float getCrohnsQ1() {
+    public int getCrohnsQ1() {
         return CrohnsQ1;
     }
 
@@ -135,7 +135,7 @@ public class CrohnsSurveyResponse {
 
     //--------------------- SETTERS -----------------------
 
-    public void setCrohnsQ1(float crohnsQ1) {
+    public void setCrohnsQ1(int crohnsQ1) {
         CrohnsQ1 = crohnsQ1;
     }
 

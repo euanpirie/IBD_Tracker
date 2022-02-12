@@ -130,16 +130,16 @@ public class CrohnsDashboardActivity extends AppCompatActivity implements View.O
             TextView tvPrediction = findViewById(R.id.tvPrediction);
 
             //get the response
-            CrohnsSurveyResponse response = CrohnsResponseRepository.getRepository(getApplicationContext()).getFromDate(LocalDate.now().toString());
+            List<CrohnsSurveyResponse> responses = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponsesSorted();
 
             //create the rule based system
             RuleBasedSystem rbs = new RuleBasedSystem(sharedPreferences.getString(MainActivity.IBD_TYPE_KEY, ""));
 
             //make the prediction
-            String prediction = rbs.predictStatus(response);
+            String prediction = rbs.predictStatus(responses);
 
             //update the text view
-            tvPrediction.setText("The AI has predicted that you are experiencing " + prediction);
+            tvPrediction.setText(prediction);
         }
     }
 }
