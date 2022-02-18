@@ -15,6 +15,7 @@
     <!-- Navvbar strings -->
     <string name="nav_dashboard">Dashboard</string>
     <string name="nav_survey">Survey</string>
+    <string name="nav_misc">Misc.</string>
     <string name="nav_settings">Settings</string>
 
     <!-- Survey general strings -->
@@ -81,7 +82,7 @@
     <string name="colitis_q5_a3">Red patches and/or large bumps on the skin</string>
     <string name="colitis_q5_a4">A new/rapidly growing painful ulcer on your skin</string>
 
-    <string name ="colitis_q6">Have you noticed any blood in any of your bowel movements?</string>
+    <string name="colitis_q6">Have you noticed any blood in any of your bowel movements?</string>
     <string name="colitis_q6_a1">No blood</string>
     <string name="colitis_q6_a2">Trace amount of blood</string>
     <string name="colitis_q6_a3">Blood makes up less than half of bowel movement</string>
@@ -95,6 +96,19 @@
     <!-- Shared dashboard strings -->
     <string name="dashboard_prediction">Press the button to predict the status of your IBD.</string>
     <string name="dashboard_predict_button">Predict</string>
+
+    <string name="dashboard_weight">Weight</string>
+
+    <!-- Crohns dashboard strings -->
+    <string name="dashboard_soft_stools">Soft/Liquid Stools</string>
+    <string name="dashboard_abdominal_pain">Abdominal Pain</string>
+    <string name="dashboard_crohns_wellbeing">General Well-being</string>
+
+    <!-- Colitis dashboard strings -->
+    <string name="dashboard_bowel_day">Day Bowel Movements</string>
+    <string name="dashboard_bowel_night">Night Bowel Movements</string>
+    <string name="dashboard_blood">Blood in Stool</string>
+
 
     <!-- App settings string -->
     <string name="settings_title">Settings &amp; Info</string>
@@ -123,5 +137,39 @@
         \n \n
     The indexes are available online, so it is possible to see how the scores are assigned to each question.
     </string>
+
+    <!-- Misc activity strings -->
+    <string name="misc_resources">Open Crohn\'s and Colitis UK resources.</string>
+    <string name="misc_notification_channel_id">IBD</string>
+    <string name="misc_notification_channel_name">IBD Tracker</string>
+    <string name="misc_notification_channel_description">IBD Tracker medicine notifications</string>
+    <string name="misc_create_reminder">Create reminder</string>
+
+    <!-- Notification strings -->
+    <string name="notification_add">Add a reminder</string>
+    <string name="notification_title">Enter reminder text</string>
+    <string name="notification_title_hint">E.g. Take azathioprine</string>
+
+    <string name="notification_time">Reminder time</string>
+
+    <string name="notification_repeating_number">Remind me every....</string>
+
+    <string name="notification_repeating"></string>
+    <string name="notification_repeating_hour">Hours</string>
+    <string name="notification_repeating_day">Days</string>
+    <string name="notification_repeating_week">Weeks</string>
+    <string name="notification_repeating_monthly">Months</string>
+
+    <string name="notification_save">Save reminder</string>
+
+    <!-- Reminder recycler strings -->
+    <string name="notification_placeholder_text">Placeholder</string>
+    <string name="notification_placeholder_time">12:00</string>
+    <string name="notification_placeholder_frequency">Every 1 day(s)</string>
+
+    <string name="notification_delete">Delete</string>
+    <string name="notification_switch_text">Status</string>
+    <string name="notification_switch_on">On</string>
+    <string name="notification_switch_off">Off</string>
 
 </resources>

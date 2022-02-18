@@ -7,6 +7,27 @@
     tools:context=".Crohns.CrohnsDashboardActivity">
 
     <TextView
+        android:id="@+id/tvGraphHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dashboard_weight"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCrohnsDashboard" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphCrohns"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGraphHeader" />
+
+    <TextView
         android:id="@+id/tvPrediction"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,31 +71,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
 
-    <ScrollView
-        android:id="@+id/svDashboard"
+    <Button
+        android:id="@+id/btnWeightGraph"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvPrediction"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/dashboard_weight"
+        app:layout_constraintEnd_toStartOf="@+id/btnStoolsGraph"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCrohnsDashboard">
+        app:layout_constraintTop_toBottomOf="@+id/graphCrohns" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="false">
+    <Button
+        android:id="@+id/btnStoolsGraph"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/dashboard_soft_stools"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnWeightGraph"
+        app:layout_constraintTop_toBottomOf="@+id/graphCrohns" />
 
-            <com.jjoe64.graphview.GraphView
-                android:id="@+id/graphTest"
-                android:layout_width="match_parent"
-                android:layout_height="200dip"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btnPainGraph"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/dashboard_abdominal_pain"
+        app:layout_constraintEnd_toStartOf="@+id/btnWellbeingGraph"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnWeightGraph" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
+    <Button
+        android:id="@+id/btnWellbeingGraph"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/dashboard_crohns_wellbeing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnPainGraph"
+        app:layout_constraintTop_toBottomOf="@+id/btnStoolsGraph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

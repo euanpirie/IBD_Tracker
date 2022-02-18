@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IBDTracker">
         <activity
+            android:name=".Misc.AddReminderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Misc.MiscActivity"
+            android:exported="false" />
+        <activity
             android:name=".WeightEntryActivity"
             android:exported="false" />
         <activity
@@ -39,6 +45,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".Misc.AlarmReceiver" android:enabled="true" android:exported="false" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

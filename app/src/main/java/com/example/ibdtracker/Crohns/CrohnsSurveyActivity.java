@@ -19,6 +19,7 @@ import com.example.ibdtracker.Data.Colitis.ColitisSurveyResponse;
 import com.example.ibdtracker.Data.Crohns.CrohnsResponseRepository;
 import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
 import com.example.ibdtracker.MainActivity;
+import com.example.ibdtracker.Misc.MiscActivity;
 import com.example.ibdtracker.R;
 import com.example.ibdtracker.SelectorActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -137,6 +138,11 @@ public class CrohnsSurveyActivity extends AppCompatActivity implements View.OnCl
                     //survey page
                     case R.id.navSurvey:
                         return true; // do nothing
+                    //misc page
+                    case R.id.navMisc:
+                        startActivity(new Intent(getApplicationContext(), MiscActivity.class)); //start misc activity
+                        finish(); //end current activity
+                        return true;
                 }
                 return false; //if not in switch statement something has gone very wrong
             }

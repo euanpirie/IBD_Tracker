@@ -2,7 +2,10 @@ package com.example.ibdtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.content.SharedPreferences;
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide(); //hide app name bar
         setContentView(R.layout.activity_main);
+
+        //create the notification channel
+        createNotificationChannel();
 
         //Get the shared preferences file
         sharedPreferences = getSharedPreferences(SelectorActivity.SHARED_PREF_FILE, MODE_PRIVATE);
@@ -72,5 +78,26 @@ public class MainActivity extends AppCompatActivity {
             },1000); //1 second delay
         }
 
+    }
+
+    /**
+     * A method to create a notification channel for the app
+     */
+    private void createNotificationChannel() {
+        // if the SDK version is >26
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String id = getString(R.string.misc_notification_channel_id);
+            CharSequence name = getString(R.string.misc_notification_channel_id); //get the channel id
+            String description = getString(R.string.misc_notification_channel_description); //get the channel descritpion
+            int importance = NotificationManager.IMPORTANCE_DEFAULT; //set the importance to the default value
+
+            //create a notification channel with the previous info
+            NotificationChannel channel = new NotificationChannel(id, name, importance);
+            channel.setDescription(description);
+
+            // register the channel with the system
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

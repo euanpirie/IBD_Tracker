@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,9 +24,15 @@ import com.example.ibdtracker.Crohns.CrohnsSurveyActivity;
 import com.example.ibdtracker.Data.Colitis.ColitisResponseRepository;
 import com.example.ibdtracker.Data.Crohns.CrohnsResponseRepository;
 import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
+import com.example.ibdtracker.Data.Reminder.IBDReminder;
+import com.example.ibdtracker.Data.Reminder.ReminderRepository;
+import com.example.ibdtracker.Misc.AlarmReceiver;
+import com.example.ibdtracker.Misc.MiscActivity;
+import com.example.ibdtracker.Misc.ReminderRecyclerViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 public class AppSettingsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,16 +62,6 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
         //get the IBD type stored in shared preferences
         String ibdType = sharedPreferences.getString(MainActivity.IBD_TYPE_KEY, "");
 
-        List<CrohnsSurveyResponse> responseList = CrohnsResponseRepository.getRepository(getApplicationContext()).getAllResponses();
-
-        CrohnsSurveyResponse response = responseList.stream()
-                .filter(test -> LocalDate.now().toString().equals(test.getDate()))
-                .findAny()
-                .orElse(null);
-
-        Toast toast = Toast.makeText(this.getApplicationContext(), responseList.size() + "" , Toast.LENGTH_SHORT);
-        toast.show();
-
         //Bottom navigation bar set up
         BottomNavigationView bottomNav = findViewById(R.id.bnvNavigation); //initialising and assigning the bottomNav variable
         bottomNav.setSelectedItemId(R.id.navSettings); //setting the selected item in the nav bar
@@ -74,10 +72,9 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 //switch for each of the menu options
                 switch(item.getItemId()) {
-                    //settings page
+                    //misc page
                     case R.id.navSettings:
                         return true; //do nothing
-
                     //dashboard page
                     case R.id.navDashboard:
                         //if crohns is being tracked
@@ -104,6 +101,11 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
                             startActivity(new Intent(getApplicationContext(), ColitisSurveyActivity.class)); //start crohns survey activity
                         }
                         finish(); // finish current activity
+                        return true;
+                    //settings page
+                    case R.id.navMisc:
+                        startActivity(new Intent(getApplicationContext(), MiscActivity.class)); //start misc activity
+                        finish(); //finish the activity
                         return true;
                 }
                 return false; //if not in switch statement something has gone very wrong
@@ -170,9 +172,39 @@ public class AppSettingsActivity extends AppCompatActivity implements View.OnCli
                             editor.putFloat(MainActivity.TYPICAL_WEIGHT_KEY, 0);
                             editor.apply();
 
+                            //get a list of all reminders
+                            List<IBDReminder> reminders = ReminderRepository.getRepository(getApplicationContext()).getAllReminders();
+
+                            //for every reminder
+                            for(IBDReminder reminder : reminders) {
+                                //create a new calendar object
+                                Calendar calendar = Calendar.getInstance();
+
+                                //set the time of the calendar to the reminder time - reminder will start at this time
+                                calendar.set(Calendar.HOUR_OF_DAY, reminder.getReminderHour());
+                                calendar.set(Calendar.MINUTE, reminder.getReminderMinute());
+
+                                //create a new alarm reciever intent
+                                Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+
+                                //put the id and reminder text as extras
+                                intent.putExtra(ReminderRecyclerViewAdapter.EXTRA_REMINDER_ID, reminder.getId());
+                                intent.putExtra(ReminderRecyclerViewAdapter.EXTRA_REMINDER_TEXT, reminder.getReminderText());
+
+                                //create a pending indent from the previous intent - flag immutable as per documentation
+                                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), reminder.getId(), intent, PendingIntent.FLAG_IMMUTABLE);
+
+                                //create an alarm manager to handle repeating alarms
+                                AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(ALARM_SERVICE);
+
+                                //cancel alarm
+                                alarmManager.cancel(pendingIntent);
+                            }
+
                             //clear the databases
                             CrohnsResponseRepository.getRepository(getApplicationContext()).deleteAll();
                             ColitisResponseRepository.getRepository(getApplicationContext()).deleteAll();
+                            ReminderRepository.getRepository(getApplicationContext()).deleteAll();
 
                             //close the app
                             finishAffinity();

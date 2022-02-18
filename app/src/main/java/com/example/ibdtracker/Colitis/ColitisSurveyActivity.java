@@ -18,6 +18,7 @@ import com.example.ibdtracker.AppSettingsActivity;
 import com.example.ibdtracker.Data.Colitis.ColitisResponseRepository;
 import com.example.ibdtracker.Data.Colitis.ColitisSurveyResponse;
 import com.example.ibdtracker.Data.Crohns.CrohnsSurveyResponse;
+import com.example.ibdtracker.Misc.MiscActivity;
 import com.example.ibdtracker.R;
 import com.example.ibdtracker.SelectorActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -137,6 +138,11 @@ public class ColitisSurveyActivity extends AppCompatActivity implements View.OnC
                         //survey page
                     case R.id.navSurvey:
                         return true; // do nothing
+                    //misc page
+                    case R.id.navMisc:
+                        startActivity(new Intent(getApplicationContext(), MiscActivity.class)); //start misc activity
+                        finish(); //end current activity
+                        return true;
                 }
                 return false; //if not in switch statement something has gone very wrong
             }
