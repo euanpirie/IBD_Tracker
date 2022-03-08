@@ -463,10 +463,11 @@ public class ColitisSurveyActivity extends AppCompatActivity implements View.OnC
 
     /**
      * A method to create and display a toast
-     * @param mesasge The message to show
+     * @param messasge The message to show
+     * @param length the duration length of the toast
      */
-    public void showToast(String mesasge, int length) {
-        Toast toast = Toast.makeText(getApplicationContext(), mesasge, length);
+    public void showToast(String messasge, int length) {
+        Toast toast = Toast.makeText(getApplicationContext(), messasge, length);
         toast.show();
     }
 }

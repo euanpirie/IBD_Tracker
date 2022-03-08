@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         if(ibdType.equals("Crohns") || ibdType.equals("Colitis")) {
             //open crohns dashboard if crohns
             if(ibdType.equals("Crohns")) {
-                //create a handler to add a delay
+                //create a handler to add a delay - testing purposes
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
             //otherwise must be colitis
             else{
-                //create a handler to add a delay
+                //create a handler to add a delay - testing purposes
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //if the values are not crohns or colitis - the selector activity needs to be opened
         else {
-            //create a handler to add a delay
+            //create a handler to add a delay - testing purposes
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * A method to create a notification channel for the app
+     * The code below is taken from the Android Developers Documentation and can be found at:
+     * https://developer.android.com/training/notify-user/channels
      */
     private void createNotificationChannel() {
         // if the SDK version is >26

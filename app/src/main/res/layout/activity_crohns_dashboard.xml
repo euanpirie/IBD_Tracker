@@ -18,6 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCrohnsDashboard" />
 
+    <!-- Graph view intialisation code taken from GraphView Documentation. It can be found at
+    https://github.com/jjoe64/GraphView -->
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphCrohns"
         android:layout_width="0dp"

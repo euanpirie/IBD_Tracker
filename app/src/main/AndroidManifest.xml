@@ -11,33 +11,43 @@
         android:theme="@style/Theme.IBDTracker">
         <activity
             android:name=".Misc.AddReminderActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Misc.MiscActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".WeightEntryActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Colitis.ColitisSurveyActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Crohns.CrohnsSurveyActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Crohns.CrohnsDashboardActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Colitis.ColitisDashboardActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".AppSettingsActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".SelectorActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
